@@ -21,6 +21,14 @@
         </span>
     </div>
 
+    <div>
+        <span>You designed tacos</span>
+        <ol>
+            <li th:each="taco : ${order.tacos}">
+                <span  th:text="${taco.name}"></span>
+            </li>
+        </ol>
+    </div>
     <h3>Deliver my taco masterpieces to...</h3>
     <label for="name">Name:</label>
     <input type="text" th:field="*{name}"/>

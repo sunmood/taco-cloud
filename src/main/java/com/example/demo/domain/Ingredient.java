@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
  * Created by sunmood on 2019/3/6.
  * 原料类
  * 使用lombok自动生成get、set方法和构造器方法，
- * 构造器方法会把final属性作为构造方法的参数注入
+ * 使用注解@RequiredArgsConstructor，构造器方法会把final属性作为构造方法的参数注入
  */
 @Data
 @RequiredArgsConstructor

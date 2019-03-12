@@ -1,15 +1,13 @@
 package com.example.demo.repository;
 
 import com.example.demo.domain.Ingredient;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by sunmood on 2019/3/7.
  */
-public interface IngredientRepository {
+@Repository
+public interface IngredientRepository extends CrudRepository<Ingredient, String> {
 
-    Iterable<Ingredient> findAll();
-
-    Ingredient findOne(String id);
-
-    Ingredient save(Ingredient ingredient);
 }

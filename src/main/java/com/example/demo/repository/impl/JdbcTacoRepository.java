@@ -18,19 +18,18 @@ import java.util.Date;
  * Created by sunmood on 2019/3/7.
  */
 @Repository
-public class JdbcTacoRepository implements TacoRepository {
+public class JdbcTacoRepository  {
     private JdbcTemplate jdbc;
 
     public JdbcTacoRepository(JdbcTemplate jdbc){
         this.jdbc = jdbc;
     }
 
-    @Override
     public Taco save(Taco taco) {
         long tacoId = saveTacoInfo(taco);
         taco.setId(tacoId);
-        for (String ingredient : taco.getIngredients()){
-            saveIngredientToTaco(ingredient, tacoId);
+        for (Ingredient ingredient : taco.getIngredients()){
+            saveIngredientToTaco(ingredient.getId(), tacoId);
         }
         return taco;
     }

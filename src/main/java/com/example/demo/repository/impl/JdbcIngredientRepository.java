@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * Created by sunmood on 2019/3/7.
  */
 @Repository//该注解同@Controller和@Component等注解的作用一样
-public class JdbcIngredientRepository implements IngredientRepository {
+public class JdbcIngredientRepository{
     private JdbcTemplate jdbc;
 
     /**
@@ -26,19 +26,18 @@ public class JdbcIngredientRepository implements IngredientRepository {
         this.jdbc = jdbc;
     }
 
-    @Override
     public Iterable<Ingredient> findAll() {
         return jdbc.query("select id, name, type from Ingredient",
                 this::mapRowToIngredient);
     }
 
-    @Override
+
     public Ingredient findOne(String id) {
         return jdbc.queryForObject("select id, name, type from Ingredient WHERE id=?",
                 this::mapRowToIngredient, id);
     }
 
-    @Override
+
     public Ingredient save(Ingredient ingredient) {
         jdbc.update("INSERT INTO Ingredient (id, name, type) VALUES (?, ? , ?)",
                 ingredient.getId(),

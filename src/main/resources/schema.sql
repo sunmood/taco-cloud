@@ -7,7 +7,7 @@ CREATE TABLE if not EXISTS Ingredient(
 );
 
 CREATE TABLE if not EXISTS Taco(
-  id IDENTITY ,
+  id bigint primary key ,
   name VARCHAR(50) not NULL,
   createdAt TIMESTAMP not null
 );
@@ -24,7 +24,7 @@ alter table Taco_Ingredients
 ADD FOREIGN KEY (ingredient) REFERENCES Ingredient(id);
 
 CREATE TABLE if not EXISTS Taco_Order(
-  id IDENTITY,
+  id bigint primary key,
   Name VARCHAR(50) not null,
   Street VARCHAR(50) not null,
   City VARCHAR(50) not null,
@@ -33,7 +33,7 @@ CREATE TABLE if not EXISTS Taco_Order(
   ccNumber VARCHAR(16) not null,
   ccExpiration VARCHAR(5) not null,
   ccCVV VARCHAR(3) not null,
-  placedAt TIMESTAMP not null,
+  placedAt TIMESTAMP not null
 );
 
 CREATE TABLE if not EXISTS Taco_Order_Tacos(
@@ -46,4 +46,16 @@ ADD FOREIGN KEY (tacoOrder) REFERENCES Taco_Order(id);
 
 ALTER TABLE Taco_Order_Tacos
 ADD FOREIGN KEY (taco) REFERENCES Taco(id);
+
+CREATE TABLE if not EXISTS User(
+  id        bigint        not null primary key,
+  username  VARCHAR(16)   not null,
+  password  VARCHAR(16)   not null,
+  fullname  VARCHAR(16)   not null,
+  street    VARCHAR(16)   not null,
+  city      VARCHAR(16)   not null,
+  state     VARCHAR(16)   not null,
+  zip       VARCHAR(16)   not null,
+  phoneNumber VARCHAR(16)
+);
 
